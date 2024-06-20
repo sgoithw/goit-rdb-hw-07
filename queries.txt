@@ -1,0 +1,25 @@
+SELECT id,
+       date,
+       date_format(date, '%Y') as year,
+       date_format(date, '%m') as month,
+       date_format(date, '%d') as day
+FROM orders;
+
+SELECT id,
+       date,
+       DATE_ADD(date, INTERVAL 1 DAY) as day_plus
+FROM orders;
+
+SELECT id,
+       date,
+       UNIX_TIMESTAMP(date) as unix
+FROM orders;
+
+SELECT COUNT(*)
+FROM orders
+WHERE date BETWEEN '1996-07-10 00:00:00' AND '1996-10-08 00:00:00';
+
+SELECT id,
+       date,
+       JSON_OBJECT('id', id, 'date', date) as json
+FROM orders
